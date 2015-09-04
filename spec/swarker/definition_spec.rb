@@ -1,9 +1,9 @@
 describe Swarker::Definition do
   let(:swagger_definition) do
-    YAML.load_file(File.expand_path('../../fixtures/definitions/swagger.json.yml', __FILE__))
+    YAML.load_file(File.expand_path('spec/fixtures/definitions/swagger.json.yml'))
   end
   let(:lurker_definition) do
-    YAML.load_file(File.expand_path('../../fixtures/definitions/lurker.json.yml', __FILE__))
+    YAML.load_file(File.expand_path('spec/fixtures/definitions/lurker.json.yml'))
   end
 
   subject { Swarker::Definition.new(:user, lurker_definition) }

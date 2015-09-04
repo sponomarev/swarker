@@ -1,5 +1,4 @@
 describe Swarker::Schema do
-
   let(:example_host) { 'example_host' }
   let(:example_title) { 'ExapleTitle' }
 

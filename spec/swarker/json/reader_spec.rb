@@ -10,9 +10,9 @@ describe Swarker::Json::Reader do
     }
   end
 
-  let(:json_document_path) { File.expand_path('../../../fixtures/document.json', __FILE__) }
-  let(:yml_document_path) { File.expand_path('../../../fixtures/document.json.yml', __FILE__) }
-  let(:erb_document_path) { File.expand_path('../../../fixtures/document.json.yml.erb', __FILE__) }
+  let(:json_document_path) { File.expand_path('spec/fixtures/document.json') }
+  let(:yml_document_path) { File.expand_path('spec/fixtures/document.json.yml') }
+  let(:erb_document_path) { File.expand_path('spec/fixtures/document.json.yml.erb') }
 
   it '#read json document' do
     expect(Swarker::Json::Reader.new(json_document_path).read).to eq(document)
