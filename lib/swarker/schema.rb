@@ -33,11 +33,9 @@ module Swarker
     end
 
     def definitions
-
     end
 
     def paths
-
     end
   end
 end

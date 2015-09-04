@@ -26,7 +26,7 @@ module Swarker
 
     def fix_refs
       properties.each_value do |property|
-        property[REF].sub!(/.json#\//, '').sub!(/(\.\.\/)+/, '#/') if property[REF]
+        property[REF].sub!(%r{.json#/}, '').sub!(%r{(\.\./)+}, '#/') if property[REF]
       end
     end
 
