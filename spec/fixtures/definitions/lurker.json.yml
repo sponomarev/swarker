@@ -1,0 +1,22 @@
+---
+properties:
+  id:
+    type: integer
+    example: 1
+    description: ''
+  name:
+    type: string
+    example: razum2um
+    description: ''
+  surname:
+    type: string
+    example: Unknown
+    description: ''
+  inviter:
+    "$ref": "../definitions/user.json#/"
+description: ''
+type: object
+additionalProperties: false
+required:
+  - id
+  - surname
