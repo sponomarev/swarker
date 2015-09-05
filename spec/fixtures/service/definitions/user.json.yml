@@ -1,0 +1,18 @@
+---
+properties:
+  id:
+    type: integer
+    example: 1
+    description: ''
+  name:
+    type: string
+    example: razum2um
+    description: ''
+  surname:
+    type: string
+    example: Unknown
+    description: ''
+description: ''
+type: object
+additionalProperties: false
+required: []

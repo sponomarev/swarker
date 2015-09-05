@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Bob",
+      "description": ""
+    },
+    "surname": {
+      "description": "",
+      "type": "string",
+      "example": "Marley"
+    }
+  },
+  "description": "",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+
+  ]
+}

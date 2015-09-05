@@ -1,0 +1,16 @@
+---
+properties:
+  id:
+    type: integer
+    example: 1
+    description: ''
+  name:
+    type: string
+    example: new-gem
+    description: ''
+  user:
+    "$ref": "../definitions/user.json#/"
+description: ''
+type: object
+additionalProperties: false
+required: []
