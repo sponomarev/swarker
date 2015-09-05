@@ -1,0 +1,37 @@
+---
+get:
+  produces:
+    - "application/json"
+  description: "user listing"
+  tags:
+    - "user listing"
+  parameters:
+    - {
+      name: limit,
+      description: '',
+      type: string,
+      default: '1',
+      in: query
+    }
+  responses:
+    "200":
+      description: ""
+      schema:
+        type: "array"
+        items:
+          description: ""
+          type: "object"
+          additionalProperties: false
+          properties:
+            id:
+              description: ""
+              type: "integer"
+              example: 1
+            name:
+              description: ""
+              type: "string"
+              example: "razum2um"
+            surname:
+              description: ""
+              type: "string"
+              example: "Marley"

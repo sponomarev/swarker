@@ -1,0 +1,45 @@
+---
+description: user listing
+prefix: users management
+requestParameters:
+  description: ''
+  type: object
+  additionalProperties: false
+  required: []
+  properties:
+    limit:
+      description: ''
+      type: string
+      example: '1'
+responseCodes:
+- status: 200
+  successful: true
+  description: ''
+responseParameters:
+  type: array
+  items:
+    description: ''
+    type: object
+    additionalProperties: false
+    required: []
+    properties:
+      id:
+        description: ''
+        type: integer
+        example: 1
+      name:
+        description: ''
+        type: string
+        example: razum2um
+      surname:
+        description: ''
+        type: string
+        example: Marley
+extensions:
+  method: GET
+  path_info: "/api/v1/users.json"
+  path_params:
+    controller: api/v1/users
+    action: index
+  query_params:
+    limit: '1'

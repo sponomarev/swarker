@@ -1,4 +1,5 @@
 require 'swarker/definition'
+require 'swarker/path'
 require 'swarker/readers'
 require 'swarker/schema'
 require 'swarker/version'
