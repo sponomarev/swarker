@@ -1,0 +1,39 @@
+---
+description: repo
+prefix: repos management
+requestParameters:
+  description: ''
+  type: object
+  additionalProperties: false
+  required: []
+  properties: {}
+responseCodes:
+- status: 200
+  successful: true
+  description: ''
+responseParameters:
+  description: ''
+  type: object
+  additionalProperties: false
+  required: []
+  properties:
+    id:
+      description: ''
+      type: integer
+      example: 1
+    name:
+      description: ''
+      type: string
+      example: lurker
+    user_id:
+      description: ''
+      type: integer
+      example: 1
+extensions:
+  method: GET
+  path_info: "/api/v1/users/1/repos/1.json"
+  path_params:
+    controller: api/v1/repos
+    action: show
+    user_id: '1'
+    id: '1'

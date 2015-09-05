@@ -1,0 +1,46 @@
+---
+description: repo listing
+prefix: repos management
+requestParameters:
+  description: ''
+  type: object
+  additionalProperties: false
+  required: []
+  properties:
+    limit:
+      description: ''
+      type: integer
+      example: 1
+responseCodes:
+- status: 200
+  successful: true
+  description: ''
+responseParameters:
+  type: array
+  items:
+    description: ''
+    type: object
+    additionalProperties: false
+    required: []
+    properties:
+      id:
+        description: ''
+        type: integer
+        example: 1
+      name:
+        description: ''
+        type: string
+        example: lurker
+      user_id:
+        description: ''
+        type: integer
+        example: 1
+extensions:
+  method: GET
+  path_info: "/api/v1/users/1/repos.json"
+  path_params:
+    controller: api/v1/repos
+    action: index
+    user_id: '1'
+  query_params:
+    limit: 1

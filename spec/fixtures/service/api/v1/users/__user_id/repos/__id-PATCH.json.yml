@@ -1,0 +1,49 @@
+---
+prefix: repos management
+description: repo updating
+requestParameters:
+  properties:
+    repo:
+      type: object
+      properties:
+        name:
+          type: string
+          example: updated-name
+          description: ''
+      description: ''
+      additionalProperties: false
+      required: []
+  description: ''
+  type: object
+  additionalProperties: false
+  required: []
+responseCodes:
+- status: 200
+  successful: true
+  description: ''
+responseParameters:
+  properties:
+    id:
+      type: integer
+      example: 1
+      description: ''
+    name:
+      type: string
+      example: updated-name
+      description: ''
+    user_id:
+      type: integer
+      example: 1
+      description: ''
+  required: []
+  description: ''
+  type: object
+  additionalProperties: false
+extensions:
+  path_info: "/api/v1/users/razum2um/repos/lurker.json"
+  method: PATCH
+  path_params:
+    controller: api/v1/repos
+    action: update
+    user_id: razum2um
+    id: lurker

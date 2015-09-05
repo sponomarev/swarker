@@ -1,0 +1,51 @@
+---
+prefix: repos management
+description: failed repo updating
+requestParameters:
+  properties:
+    repo:
+      type: object
+      properties:
+        name:
+          type: string
+          example: ''
+          description: ''
+      description: ''
+      additionalProperties: false
+      required: []
+  description: ''
+  type: object
+  additionalProperties: false
+  required: []
+responseCodes:
+- status: 400
+  successful: true
+  description: ''
+responseParameters:
+  properties:
+    errors:
+      type: object
+      example: 1
+      properties:
+        name:
+          type: array
+          items:
+            type: string
+            example: can't be blank
+            description: ''
+      description: ''
+      additionalProperties: false
+      required: []
+  description: ''
+  type: object
+  additionalProperties: false
+  required: []
+extensions:
+  path_info: "/api/v1/users/razum2um/repos.json"
+  method: PATCH
+  suffix: failed
+  path_params:
+    controller: api/v1/repos
+    action: update
+    user_id: razum2um
+    id: lurker

@@ -1,0 +1,36 @@
+---
+prefix: 'users management'
+description: 'user updating'
+requestParameters:
+  properties:
+    user:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Bob
+responseCodes:
+- status: 400
+  successful: true
+  description: ''
+- status: 200
+  successful: true
+  description: ''
+responseParameters:
+  properties:
+    id:
+      type: integer
+      example: 1
+    name:
+      type: string
+      example: Bob
+    surname:
+      type: string
+      example: Marley
+extensions:
+  path_info: "/api/v1/users/1"
+  method: PATCH
+  path_params:
+    controller: api/v1/users
+    action: update
+    id: 1

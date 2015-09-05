@@ -1,0 +1,30 @@
+---
+prefix: users management
+description: user creation
+requestParameters:
+  properties:
+    user:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Bob
+responseCodes:
+- status: 200
+  successful: true
+  description: ''
+responseParameters:
+  properties:
+    id:
+      type: integer
+      example: 1
+    name:
+      type: string
+      example: Bob
+  required: []
+extensions:
+  method: POST
+  path_info: "/api/v1/users.json"
+  path_params:
+    controller: api/v1/users
+    action: create

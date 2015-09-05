@@ -1,0 +1,18 @@
+---
+prefix: users management
+description: user deletion
+requestParameters:
+  properties: {}
+responseCodes:
+- status: 200
+  successful: true
+  description: ''
+responseParameters:
+  properties: {}
+extensions:
+  method: DELETE
+  path_info: "/api/v1/users/1.json"
+  path_params:
+    controller: api/v1/users
+    action: destroy
+    id: 1
