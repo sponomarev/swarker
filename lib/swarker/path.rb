@@ -20,7 +20,7 @@ module Swarker
     end
 
     def verb
-      @preparsed ? @scheme.first : original_scheme['extensions']['method'].downcase
+      @preparsed ? @scheme.keys.first : original_scheme['extensions']['method'].downcase
     end
 
     private
