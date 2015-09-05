@@ -30,4 +30,23 @@ describe Swarker::Path do
       expect(subject.scheme).to eq(swagger_path)
     end
   end
+
+  context 'on POST operation' do
+    let(:verb) { 'post' }
+
+    let(:swagger_path) { YAML.load_file(File.expand_path('spec/fixtures/paths/post/swagger.json.yml')) }
+    let(:lurker_path) { YAML.load_file(File.expand_path('spec/fixtures/paths/post/lurker.json.yml')) }
+    subject { Swarker::Path.new(:some_path, lurker_path) }
+
+    it('recognise operation') { expect(subject.scheme).to have_key(verb) }
+
+    it('recognise description') { expect(subject.scheme[verb]['description']).to eq('repo creation') }
+
+    it('recognise description') { expect(subject.scheme[verb]['description']).to eq('repo creation') }
+
+    it('recognise parameters') do
+      # FIXME: count path params
+      expect(subject.scheme[verb]['parameters'].count).to eq(1)
+    end
+  end
 end

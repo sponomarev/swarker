@@ -1,0 +1,31 @@
+---
+description: repo creation
+prefix: repos management
+requestParameters:
+  properties:
+    repo:
+      properties:
+        name:
+          type: string
+          example: new-gem
+          description: ''
+      description: ''
+      type: object
+      additionalProperties: false
+      required: []
+  description: ''
+  type: object
+  additionalProperties: false
+  required: []
+responseCodes:
+- status: 200
+  successful: true
+responseParameters:
+  "$ref": "../../../../definitions/repo.json#/"
+extensions:
+  method: POST
+  path_info: "/api/v1/users/1/repos.json"
+  path_params:
+    controller: api/v1/repos
+    action: create
+    user_id: '1'

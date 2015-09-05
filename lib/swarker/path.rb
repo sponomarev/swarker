@@ -69,7 +69,7 @@ module Swarker
 
     def response_schema
       schema = @original_scheme['responseParameters'].dup
-      schema['items'].reject! { |k| k == 'required' }
+      schema['items'].reject! { |k| k == 'required' } if schema['items']
 
       schema
     end
