@@ -1,4 +1,5 @@
 module Swarker
+  # FIXME: maybe some refactor?
   class Path
     attr_reader :path, :scheme
 
@@ -48,6 +49,7 @@ module Swarker
       [description]
     end
 
+    # TODO: add logic for path parameters
     def parameters
       @original_scheme['requestParameters']['properties'].collect do |parameter, options|
         {
@@ -80,6 +82,7 @@ module Swarker
       schema
     end
 
+    # TODO: add logic for formData
     def determine_in(_parameter)
       'query'
     end
