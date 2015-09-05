@@ -1,5 +1,5 @@
 require 'swarker/version'
-require 'swarker/json/reader'
+require 'swarker/readers/file_reader'
 require 'swarker/schema'
 require 'swarker/definition'
 

@@ -1,4 +1,4 @@
-describe Swarker::Json::Reader do
+describe Swarker::Readers::FileReader do
   let(:document) do
     {
       'array'   => [1, 2, 3],
@@ -15,14 +15,14 @@ describe Swarker::Json::Reader do
   let(:erb_document_path) { File.expand_path('spec/fixtures/document.json.yml.erb') }
 
   it '#read json document' do
-    expect(Swarker::Json::Reader.new(json_document_path).read).to eq(document)
+    expect(Swarker::Readers::FileReader.new(json_document_path).read).to eq(document)
   end
 
   it '#read yml document' do
-    expect(Swarker::Json::Reader.new(yml_document_path).read).to eq(document)
+    expect(Swarker::Readers::FileReader.new(yml_document_path).read).to eq(document)
   end
 
   it '#read erb document' do
-    expect(Swarker::Json::Reader.new(erb_document_path).read).to eq(document)
+    expect(Swarker::Readers::FileReader.new(erb_document_path).read).to eq(document)
   end
 end

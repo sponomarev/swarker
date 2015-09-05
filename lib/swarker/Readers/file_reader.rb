@@ -3,8 +3,8 @@ require 'json'
 require 'yaml'
 
 module Swarker
-  module Json
-    class Reader
+  module Readers
+    class FileReader
       attr_reader :path
 
       JSON_EXT = '.json'.freeze
