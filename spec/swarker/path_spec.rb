@@ -52,4 +52,13 @@ describe Swarker::Path do
       expect(subject.scheme[verb]['parameters'].count).to eq(1)
     end
   end
+
+  context 'preparsed scheme' do
+    let(:swagger_path) { YAML.load_file(File.expand_path('spec/fixtures/paths/get/swagger.json.yml')) }
+    subject { Swarker::Path.new(:some_path, swagger_path, true) }
+
+    it 'store path without conversion' do
+      expect(subject.scheme).to eq(swagger_path)
+    end
+  end
 end

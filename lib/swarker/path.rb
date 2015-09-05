@@ -6,16 +6,21 @@ module Swarker
       'produces' => ['application/json']
     }
 
-    def initialize(path, original_scheme)
+    def initialize(path, original_scheme, preparsed = false)
       @path            = path
       @original_scheme = original_scheme
-      @scheme          = {}
-      parse_scheme
+      @preparsed       = preparsed
+
+      if preparsed
+        @scheme = @original_scheme
+      else
+        @scheme = {}
+        parse_scheme
+      end
     end
 
-
     def verb
-      original_scheme['extensions']['method'].downcase
+      @preparsed ? @scheme.first : original_scheme['extensions']['method'].downcase
     end
 
     private
