@@ -13,6 +13,11 @@ module Swarker
       parse_scheme
     end
 
+
+    def verb
+      original_scheme['extensions']['method'].downcase
+    end
+
     private
 
     attr_reader :original_scheme
@@ -28,10 +33,6 @@ module Swarker
         'parameters'  => parameters,
         'responses'   => responses
       }
-    end
-
-    def verb
-      original_scheme['extensions']['method'].downcase
     end
 
     def description

@@ -4,7 +4,10 @@ describe Swarker::Path do
     let(:lurker_path) { YAML.load_file(File.expand_path('spec/fixtures/paths/get/lurker.json.yml')) }
     subject { Swarker::Path.new(:some_path, lurker_path) }
 
-    it('recognise operation') { expect(subject.scheme).to have_key('get') }
+    it('recognise operation') do
+      expect(subject.scheme).to have_key('get')
+      expect(subject.verb).to eq('get')
+    end
 
     it('recognise description') { expect(subject.scheme['get']['description']).to eq('user listing') }
 
