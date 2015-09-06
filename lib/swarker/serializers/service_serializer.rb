@@ -5,7 +5,7 @@ module Swarker
 
       def initialize(service)
         @service = service
-        @schema = build_hash
+        @schema  = build_hash
       end
 
       private
@@ -25,7 +25,8 @@ module Swarker
 
       def objects_hash(objects)
         objects.each_with_object({}) do |object, result|
-          result[object.name] = object.schema
+          result[object.name] ||= {}
+          result[object.name].merge!(object.schema)
         end
       end
 
