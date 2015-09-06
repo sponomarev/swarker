@@ -14,12 +14,12 @@ module Swarker
     private
 
     def parse_parameters
-      request_parameters + path_parameters
+      in_request + in_path
     end
 
-    def request_parameters
+    def in_request
       # TODO: add logic for nested parameters
-      @path_schema[:requestParameters][:properties].collect do |parameter, options|
+      accounted_request_params.collect do |parameter, options|
         {
           name:        parameter,
           description: options[:description],
@@ -30,17 +30,25 @@ module Swarker
       end
     end
 
-    def path_parameters
-      @path_schema[:extensions][:path_params].select { |k, v| !IGNORED_PATH_PARAMS.include?(k.to_sym) }.collect do |parameter, default|
+    def accounted_request_params
+      @path_schema[:requestParameters][:properties]
+    end
+
+    def in_path
+      accounted_path_params.collect do |parameter, default|
         {
           name:        parameter,
           description: '',       # nothing to propose for description
           type:        'string', # assume all path parameters are strings
           default:     default,
-          in:          IN_QUERY,  # path params are always in query
+          in:          IN_QUERY, # path params are always in query
           required:    true
         }
       end
+    end
+
+    def accounted_path_params
+      @path_schema[:extensions][:path_params].select { |k| !IGNORED_PATH_PARAMS.include?(k.to_sym) }
     end
 
     # TODO: add logic for formData
