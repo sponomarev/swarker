@@ -1,5 +1,8 @@
 module Swarker
   class PathParameters
+    IGNORED_PATH_PARAMS = [:controller, :action]
+    IN_QUERY            = 'query'.freeze
+
     attr_reader :parameters
 
     def initialize(path_schema)
@@ -16,7 +19,7 @@ module Swarker
 
     def request_parameters
       # TODO: add logic for nested parameters
-    @path_schema[:requestParameters][:properties].collect do |parameter, options|
+      @path_schema[:requestParameters][:properties].collect do |parameter, options|
         {
           name:        parameter,
           description: options[:description],
@@ -27,14 +30,22 @@ module Swarker
       end
     end
 
-    # TODO: add logic for `extensions/path_params`
     def path_parameters
-      []
+      @path_schema[:extensions][:path_params].select { |k, v| !IGNORED_PATH_PARAMS.include?(k.to_sym) }.collect do |parameter, default|
+        {
+          name:        parameter,
+          description: '',       # nothing to propose for description
+          type:        'string', # assume all path parameters are strings
+          default:     default,
+          in:          IN_QUERY,  # path params are always in query
+          required:    true
+        }
+      end
     end
 
     # TODO: add logic for formData
     def determine_in(_parameter)
-      'query'.freeze
+      IN_QUERY
     end
   end
 end
