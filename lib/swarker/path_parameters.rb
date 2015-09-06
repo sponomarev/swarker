@@ -31,7 +31,7 @@ module Swarker
         }.compact
 
         param_desc[:required] = true if require_request_params.include?(parameter)
-        param_desc[REF]       = options[REF].sub(%r{.json#/}, '').sub(%r{(\.\./)+}, '#/') if options[REF]
+        param_desc[:schema]   = { REF => options[REF].sub(%r{.json#/}, '').sub(%r{(\.\./)+}, '#/') } if options[REF]
 
         param_desc
       end
