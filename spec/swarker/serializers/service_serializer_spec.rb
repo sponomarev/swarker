@@ -15,7 +15,7 @@ describe Swarker::Serializers::ServiceSerializer do
     it 'merges paths properly' do
       expect(subject[:paths]['/api/v1/users/{id}.json']).to include(:delete, :get, :patch)
 
-      actions_count = subject[:paths].values.inject(0) { |sum, actions| sum + actions.count }
+      actions_count = subject[:paths].values.inject(0) { |a, e| a + e.count }
       expect(actions_count).to eq(12)
     end
   end
