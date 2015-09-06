@@ -25,7 +25,7 @@ module Swarker
 
       def objects_hash(objects)
         objects.each_with_object({}) do |object, result|
-          result[object.name] ||= {}
+          result[object.name] ||= HashWithIndifferentAccess.new
           result[object.name].merge!(object.schema)
         end
       end
