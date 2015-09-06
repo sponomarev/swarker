@@ -47,10 +47,9 @@ describe Swarker::Path do
       expect(subject.schema[verb][:responses]['200'][:schema]['$ref']).to eq('#/definitions/repo')
     end
 
-    # it('recognise parameters') do
-    #   # FIXME: count path params
-    #   expect(subject.schema[verb]['parameters'].count).to eq(2)
-    # end
+    it('recognise parameters') do
+      expect(subject.schema[verb][:parameters].count).to eq(swagger_path[verb]['parameters'].count)
+    end
 
     # it 'converts path' do
     #   expect(subject.schema).to eq(swagger_path)
