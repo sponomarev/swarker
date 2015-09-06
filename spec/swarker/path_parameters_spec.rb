@@ -21,7 +21,21 @@ describe Swarker::PathParameters do
 
     it('recognise parameters') do
       expect(subject.parameters.count).to eq(2)
-      expect(subject.parameters.last).to eq(user_id_param)
+      expect(subject.parameters).to include(user_id_param)
+    end
+  end
+
+  context 'complex case on request with formData and ref' do
+    let(:lurker_path) { YAML.load_file(File.expand_path('spec/fixtures/paths/complex/lurker.json.yml')) }
+    let(:user_param) do
+      { name: 'user', description: '', in: 'formData', '$ref' => '#/definitions/user_request_parameters' }
+    end
+
+    subject { Swarker::PathParameters.new(lurker_path) }
+
+    it('recognise parameters') do
+      expect(subject.parameters.count).to eq(2)
+      expect(subject.parameters).to include(user_param)
     end
   end
 end
