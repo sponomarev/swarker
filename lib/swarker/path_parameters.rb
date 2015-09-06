@@ -22,7 +22,7 @@ module Swarker
     def in_request
       # TODO: add logic for nested parameters
       accounted_request_params.collect do |parameter, options|
-        param_desc            = {
+        param_desc = {
           name:        parameter,
           description: options[:description] || '', # blank unless given
           type:        options[:type],
@@ -62,12 +62,12 @@ module Swarker
       @path_schema[:extensions][:path_params].select { |k| !IGNORED_PATH_PARAMS.include?(k.to_sym) }
     end
 
-    def determine_in(_parameter)
+    def determine_in(parameter)
       case (verb)
       when 'get'
         IN_QUERY
       else
-        query_params.include?(_parameter) ? IN_QUERY : IN_FORM_DATA
+        query_params.include?(parameter) ? IN_QUERY : IN_FORM_DATA
       end
     end
 
