@@ -51,9 +51,9 @@ describe Swarker::Path do
       expect(subject.schema[verb][:parameters].count).to eq(swagger_path[verb]['parameters'].count)
     end
 
-    # it 'converts path' do
-    #   expect(subject.schema).to eq(swagger_path)
-    # end
+    it 'converts path' do
+      expect(subject.schema).to eq(swagger_path)
+    end
   end
 
   context 'preparsed scheme' do

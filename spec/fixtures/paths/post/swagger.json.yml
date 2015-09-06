@@ -17,7 +17,7 @@ post:
       name: "user_id",
       description: '',
       type: string,
-      default: 1,
+      default: '1',
       in: query,
       required: true
     }

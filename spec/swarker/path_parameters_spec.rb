@@ -16,12 +16,16 @@ describe Swarker::PathParameters do
     let(:user_id_param) do
       { name: 'user_id', description: '', type: 'string', default: '1', in: 'query', required: true }
     end
+    let(:repo_name_param) do
+      { name: 'repo[name]', description: '', type: 'string', default: 'new-gem', in: 'formData' }
+    end
 
     subject { Swarker::PathParameters.new(lurker_path) }
 
     it('recognise parameters') do
       expect(subject.parameters.count).to eq(2)
       expect(subject.parameters).to include(user_id_param)
+      expect(subject.parameters.first).to eq(repo_name_param)
     end
   end
 

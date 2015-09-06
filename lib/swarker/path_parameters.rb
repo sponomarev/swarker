@@ -20,20 +20,27 @@ module Swarker
     end
 
     def in_request
-      # TODO: add logic for nested parameters
-      accounted_request_params.collect do |parameter, options|
-        param_desc = {
-          name:        parameter,
-          description: options[:description] || '', # blank unless given
-          type:        options[:type],
-          default:     options[:example],
-          in:          determine_in(parameter)
-        }.compact
+      parameters_from_properties(accounted_request_params).flatten
+    end
 
-        param_desc[:required] = true if require_request_params.include?(parameter)
-        param_desc[:schema]   = { REF => options[REF].sub(%r{.json#/}, '').sub(%r{(\.\./)+}, '#/') } if options[REF]
+    def parameters_from_properties(properties, name_prefix = nil)
+      properties.collect do |parameter, options|
+        if options[:properties]
+          parameters_from_properties(options[:properties], parameter)
+        else
+          param_desc = {
+            name:        name_prefix ? "#{name_prefix}[#{parameter}]" : parameter,
+            description: options[:description] || '', # blank unless given
+            type:        options[:type],
+            default:     options[:example],
+            in:          determine_in(parameter)
+          }.compact
 
-        param_desc
+          param_desc[:required] = true if require_request_params.include?(parameter)
+          param_desc[:schema]   = { REF => options[REF].sub(%r{.json#/}, '').sub(%r{(\.\./)+}, '#/') } if options[REF]
+
+          param_desc
+        end
       end
     end
 
