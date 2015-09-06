@@ -43,14 +43,18 @@ describe Swarker::Path do
 
     it('recognise operation') { expect(subject.schema).to have_key(verb) }
 
-    it('recognise description') { expect(subject.schema[verb]['description']).to eq('repo creation') }
-
-    it('recognise description') { expect(subject.schema[verb]['description']).to eq('repo creation') }
-
-    it('recognise parameters') do
-      # FIXME: count path params
-      expect(subject.schema[verb]['parameters'].count).to eq(1)
+    it 'converts ref in responses schema' do
+      expect(subject.schema[verb][:responses]['200'][:schema]['$ref']).to eq('#/definitions/repo')
     end
+
+    # it('recognise parameters') do
+    #   # FIXME: count path params
+    #   expect(subject.schema[verb]['parameters'].count).to eq(2)
+    # end
+
+    # it 'converts path' do
+    #   expect(subject.schema).to eq(swagger_path)
+    # end
   end
 
   context 'preparsed scheme' do

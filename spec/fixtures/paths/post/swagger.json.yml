@@ -1,0 +1,20 @@
+---
+post:
+  produces:
+    - "application/json"
+  description: "repo creation"
+  tags:
+    - "repo creation"
+  parameters:
+    - {
+      name: "repo[name]",
+      description: '',
+      type: string,
+      default: new-gem,
+      in: formData
+    }
+  responses:
+    "200":
+      description: ""
+      schema:
+        "$ref": "#/definitions/repo"

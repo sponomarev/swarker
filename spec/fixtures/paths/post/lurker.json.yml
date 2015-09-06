@@ -1,6 +1,6 @@
 ---
 description: repo creation
-prefix: repos management
+prefix: repo creation
 requestParameters:
   properties:
     repo:

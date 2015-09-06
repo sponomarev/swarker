@@ -80,6 +80,8 @@ module Swarker
       response_schema = @original_schema[:responseParameters].dup
       response_schema[:items].reject! { |k| k.to_sym == :required } if response_schema[:items]
 
+      response_schema['$ref'].sub!(%r{.json#/}, '').sub!(%r{(\.\./)+}, '#/') if response_schema['$ref']
+
       response_schema
     end
 
