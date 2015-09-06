@@ -5,8 +5,10 @@ module Swarker
     class ServiceReader
       attr_reader :services
 
-      SERVICE_EXT  = '.service.yml'.freeze
-      DEFAULT_PORT = 80
+      SERVICE_EXT     = '.service.yml'.freeze
+      DEFAULT_PORT    = 80
+      DEFINITIONS_DIR = 'definitions'.freeze
+      PATHS_DIR       = 'api'.freeze
 
       def initialize(dir)
         @dir      = dir
@@ -18,12 +20,25 @@ module Swarker
       attr_reader :dir
 
       def read_services
-        # TODO: read definitions
-        # TODO: read paths
-
         hosts.collect do |host|
-          Swarker::Service.new(host, original_schema)
+          Swarker::Service.new(host, original_schema, definitions, paths)
         end
+      end
+
+      def definitions
+        @definitions ||= DefinitionsReader.new(definitions_dir).definitions
+      end
+
+      def definitions_dir
+        File.join(dir, DEFINITIONS_DIR)
+      end
+
+      def paths
+        @paths ||= PathsMerger.new(PathsReader.new(paths_dir).paths).paths
+      end
+
+      def paths_dir
+        File.join(dir, PATHS_DIR)
       end
 
       def hosts

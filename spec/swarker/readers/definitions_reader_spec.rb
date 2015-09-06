@@ -7,9 +7,7 @@ describe Swarker::Readers::DefinitionsReader do
     expect(subject.definitions.count).to eq(3)
   end
 
-  it 'create only Definition objects' do
-    expect(subject.definitions).to all(be_an(Swarker::Definition))
-  end
+  it('create only Definition objects') { expect(subject.definitions).to all(be_an(Swarker::Definition)) }
 
   it 'parse definition name properly' do
     expect(subject.definitions.collect(&:name)).to match_array(%w(repo user user_request_parameters))
