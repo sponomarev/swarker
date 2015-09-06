@@ -11,7 +11,6 @@ describe Swarker::Service do
   end
 
   it 'recognise title' do
-    p subject.schema
-    expect(subject.schema['info']['title']).to eq('Lurker Demo Application')
+    expect(subject.schema[:info][:title]).to eq('Lurker Demo Application')
   end
 end
