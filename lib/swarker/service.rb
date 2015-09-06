@@ -27,7 +27,10 @@ module Swarker
     end
 
     def computed_schema
-      { info: { title: original_schema[:name] } }
+      {
+        host: host,
+        info: { title: original_schema[:name] }
+      }
     end
   end
 end
