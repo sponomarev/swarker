@@ -31,4 +31,13 @@ describe Swarker::Readers::ServiceReader do
       expect(subject.paths).to all(be_an(Swarker::Path))
     end
   end
+
+  context 'with subtree' do
+    let(:subtree) { '/api/v1' }
+    subject { Swarker::Readers::ServiceReader.new(service_dir, subtree).services.last }
+
+    it 'has paths' do
+      expect(subject.paths).to have(10).items
+    end
+  end
 end

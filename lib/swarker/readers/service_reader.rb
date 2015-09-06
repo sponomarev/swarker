@@ -10,14 +10,16 @@ module Swarker
       DEFINITIONS_DIR = 'definitions'.freeze
       PATHS_DIR       = 'api'.freeze
 
-      def initialize(dir)
-        @dir      = dir
+      def initialize(dir, subtree = nil)
+        @dir     = dir
+        @subtree = subtree
+
         @services = read_services
       end
 
       private
 
-      attr_reader :dir
+      attr_reader :dir, :subtree
 
       def read_services
         hosts.collect do |host|
@@ -38,7 +40,7 @@ module Swarker
       end
 
       def paths_dir
-        File.join(dir, PATHS_DIR)
+        File.join(dir, subtree || PATHS_DIR)
       end
 
       def hosts
