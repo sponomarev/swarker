@@ -36,22 +36,9 @@ module Swarker
       {
         description: original_schema[:description],
         tags:        [original_schema[:description]],
-        parameters:  parameters,
+        parameters:  PathParameters.new(original_schema).parameters,
         responses:   responses
       }
-    end
-
-    # TODO: add logic for name parameters
-    def parameters
-      @original_schema[:requestParameters][:properties].collect do |parameter, options|
-        {
-          name:        parameter,
-          description: options[:description],
-          type:        options[:type],
-          default:     options[:example],
-          in:          determine_in(parameter)
-        }
-      end
     end
 
     def responses
@@ -75,11 +62,6 @@ module Swarker
       response_schema['$ref'].sub!(%r{.json#/}, '').sub!(%r{(\.\./)+}, '#/') if response_schema['$ref']
 
       response_schema
-    end
-
-    # TODO: add logic for formData
-    def determine_in(_parameter)
-      'query'.freeze
     end
   end
 end

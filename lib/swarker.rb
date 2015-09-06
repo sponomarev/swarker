@@ -2,6 +2,7 @@ require 'active_support/core_ext/hash'
 
 require 'swarker/definition'
 require 'swarker/path'
+require 'swarker/path_parameters'
 require 'swarker/paths_merger'
 require 'swarker/readers'
 require 'swarker/serializers'
