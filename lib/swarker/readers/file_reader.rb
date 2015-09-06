@@ -16,6 +16,12 @@ module Swarker
       end
 
       def read
+        HashWithIndifferentAccess.new(readed_hash)
+      end
+
+      private
+
+      def readed_hash
         case File.extname(path)
         when JSON_EXT
           read_json
@@ -25,8 +31,6 @@ module Swarker
           read_erb
         end
       end
-
-      private
 
       def read_json
         JSON.parse(File.read(path))
