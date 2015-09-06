@@ -1,5 +1,4 @@
 module Swarker
-  # FIXME: maybe some refactor?
   class Path
     attr_reader :name, :schema
 
@@ -12,41 +11,34 @@ module Swarker
       @original_schema = HashWithIndifferentAccess.new(original_schema)
       @preparsed       = preparsed
 
-      if preparsed
-        @schema = @original_schema
-      else
-        @schema = HashWithIndifferentAccess.new
-        parse_schema
-      end
+      parse_schema
     end
 
     def verb
-      @preparsed ? @schema.keys.first : original_schema[:extensions][:method].downcase
+      # Lurker schema has only one request verb per file
+      @verb ||= @preparsed ? @schema.keys.first : original_schema[:extensions][:method].downcase
     end
 
     private
 
-    attr_reader :original_schema
+    attr_reader :original_schema, :preparsed
+    alias_method :preparsed?, :preparsed
 
     def parse_schema
-      @schema[verb] = DEFAULT_SCHEMA.merge(computed_schema)
+      @schema = preparsed? ? @original_schema : create_schema
+    end
+
+    def create_schema
+      HashWithIndifferentAccess.new(verb => DEFAULT_SCHEMA.merge(computed_schema))
     end
 
     def computed_schema
       {
-        description: description,
-        tags:        tags,
+        description: original_schema[:description],
+        tags:        [original_schema[:description]],
         parameters:  parameters,
         responses:   responses
       }
-    end
-
-    def description
-      original_schema[:description]
-    end
-
-    def tags
-      [description]
     end
 
     # TODO: add logic for name parameters
