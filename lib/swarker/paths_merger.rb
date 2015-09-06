@@ -28,8 +28,8 @@ module Swarker
     end
 
     def merge_paths(first_path, second_path)
-      scheme = first_path.scheme.dup
-      scheme.values.first['responses'].merge! second_path.scheme.values.first['responses']
+      scheme = first_path.schema.dup
+      scheme.values.first['responses'].merge! second_path.schema.values.first['responses']
       Swarker::Path.new(first_path.name, scheme, true)
     end
   end

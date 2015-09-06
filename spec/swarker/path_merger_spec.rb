@@ -19,8 +19,8 @@ describe Swarker::PathsMerger do
   end
 
   it 'merge responses of paths with the same action and route' do
-    expect(merged_path.scheme['patch']['responses'].count).to eq(2)
-    expect(merged_path.scheme['patch']['responses']).to include('200')
-    expect(merged_path.scheme['patch']['responses']).to include('400')
+    expect(merged_path.schema['patch']['responses'].count).to eq(2)
+    expect(merged_path.schema['patch']['responses']).to include('200')
+    expect(merged_path.schema['patch']['responses']).to include('400')
   end
 end
