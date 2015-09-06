@@ -16,7 +16,6 @@ describe Swarker::Readers::ServiceReader do
     expect(subject.services.collect(&:host)).to match_array(service_hosts)
   end
 
-
   context 'just readed service' do
     subject { Swarker::Readers::ServiceReader.new(service_dir).services.last }
 

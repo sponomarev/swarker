@@ -4,6 +4,7 @@ require 'swarker/definition'
 require 'swarker/path'
 require 'swarker/paths_merger'
 require 'swarker/readers'
+require 'swarker/serializers'
 require 'swarker/service'
 require 'swarker/version'
 
