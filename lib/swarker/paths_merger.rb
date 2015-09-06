@@ -10,7 +10,7 @@ module Swarker
     private
 
     def merge(original_paths)
-      groups = {}
+      groups = HashWithIndifferentAccess.new
 
       original_paths.each do |path|
         if groups[path_key(path)].nil?
@@ -29,7 +29,7 @@ module Swarker
 
     def merge_paths(first_path, second_path)
       scheme = first_path.schema.dup
-      scheme.values.first['responses'].merge! second_path.schema.values.first['responses']
+      scheme.values.first[:responses].merge! second_path.schema.values.first[:responses]
       Swarker::Path.new(first_path.name, scheme, true)
     end
   end
