@@ -1,14 +1,14 @@
 module Swarker
   class Definition
-    attr_reader :name, :object, :raw_data
+    attr_reader :name, :schema
 
     REQUIRED_FIELD   = 'required'.freeze
     PROPERTIES_FIELD = 'properties'.freeze
     REF              = '$ref'.freeze
 
-    def initialize(name, raw_data)
-      @name     = name
-      @raw_data = raw_data
+    def initialize(name, original_schema)
+      @name            = name
+      @original_schema = original_schema
       move_required_fields
       fix_refs
     end
@@ -16,8 +16,8 @@ module Swarker
     private
 
     def move_required_fields
-      requred_properties = raw_data.fetch(REQUIRED_FIELD)
-      @object            = raw_data.reject { |k| k == REQUIRED_FIELD }
+      requred_properties = @original_schema.fetch(REQUIRED_FIELD)
+      @schema            = @original_schema.reject { |k| k == REQUIRED_FIELD }
 
       requred_properties.each do |property|
         properties[property][REQUIRED_FIELD] = true
@@ -31,7 +31,7 @@ module Swarker
     end
 
     def properties
-      object[PROPERTIES_FIELD]
+      schema[PROPERTIES_FIELD]
     end
   end
 end
