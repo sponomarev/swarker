@@ -7,6 +7,7 @@ module Swarker
     desc 'convert', 'Converts lurker schema to swaggers one'
     option :input, aliases: '-i', desc: 'Input path', default: 'lurker'
     option :output, aliases: '-o', desc: 'Output path', default: 'public'
+    option :subtree, aliases: '-s', desc: 'Subtree of lurker paths', default: nil
     option :force, aliases: '-f', type: :boolean, desc: 'Rewrite output without confirmation'
 
     def convert
@@ -23,7 +24,7 @@ module Swarker
     private
 
     def services
-      Swarker::Readers::ServiceReader.new(input).services
+      Swarker::Readers::ServiceReader.new(input, subtree).services
     end
 
     def input
@@ -36,6 +37,10 @@ module Swarker
 
     def force?
       options[:force]
+    end
+
+    def subtree
+      options[:subtree]
     end
   end
 end
