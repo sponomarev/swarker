@@ -2,8 +2,8 @@ module Swarker
   class Service
     DEFAULT_SCHEMA = {
       swagger:  '2.0'.freeze,
-      consumes: 'application/json'.freeze,
-      produces: 'application/json'.freeze,
+      consumes: ['application/json'.freeze],
+      produces: ['application/json'.freeze],
       info:     { version: '1.0'.freeze }
     }
 
