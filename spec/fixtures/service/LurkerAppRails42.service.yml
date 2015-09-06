@@ -2,7 +2,7 @@
 basePath: ''
 description: ''
 domains:
-  '[Sandbox] Heroku': 'http://lurker-app.herokuapp.com'
+  '[Sandbox] Heroku': 'http://lurker-app.herokuapp.com:8080'
   '[Real] razum2um.me': 'http://lurker.razum2um.me'
 name: Lurker Demo Application
 extensions: {}
