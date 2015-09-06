@@ -15,7 +15,8 @@ module Swarker
     end
 
     def request_parameters
-      @path_schema[:requestParameters][:properties].collect do |parameter, options|
+      # TODO: add logic for nested parameters
+    @path_schema[:requestParameters][:properties].collect do |parameter, options|
         {
           name:        parameter,
           description: options[:description],
