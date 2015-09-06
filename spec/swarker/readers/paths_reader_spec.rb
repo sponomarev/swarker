@@ -12,8 +12,8 @@ describe Swarker::Readers::PathsReader do
   end
 
   it 'parse paths route properly' do
-    expect(subject.paths.collect(&:path)).to include('/api/v1/users/{user_id}/repos/{id}.json')
-    expect(subject.paths.collect(&:path)).to include('/api/v1/users/{id}.json')
-    expect(subject.paths.collect(&:path)).to include('/api/v1/users.json')
+    expect(subject.paths.collect(&:name)).to include('/api/v1/users/{user_id}/repos/{id}.json')
+    expect(subject.paths.collect(&:name)).to include('/api/v1/users/{id}.json')
+    expect(subject.paths.collect(&:name)).to include('/api/v1/users.json')
   end
 end

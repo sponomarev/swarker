@@ -59,7 +59,7 @@ describe Swarker::Path do
 
     it 'store path without conversion' do
       expect(subject.scheme).to eq(swagger_path)
-      expect(subject.path).to eq(:some_path)
+      expect(subject.name).to eq(:some_path)
     end
   end
 end

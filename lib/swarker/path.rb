@@ -1,14 +1,14 @@
 module Swarker
   # FIXME: maybe some refactor?
   class Path
-    attr_reader :path, :scheme
+    attr_reader :name, :scheme
 
     DEFAULT_SCHEME = {
       'produces' => ['application/json']
     }
 
-    def initialize(path, original_scheme, preparsed = false)
-      @path            = path
+    def initialize(name, original_scheme, preparsed = false)
+      @name            = name
       @original_scheme = original_scheme
       @preparsed       = preparsed
 
@@ -49,7 +49,7 @@ module Swarker
       [description]
     end
 
-    # TODO: add logic for path parameters
+    # TODO: add logic for name parameters
     def parameters
       @original_scheme['requestParameters']['properties'].collect do |parameter, options|
         {

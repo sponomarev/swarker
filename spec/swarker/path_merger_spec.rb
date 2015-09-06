@@ -14,7 +14,7 @@ describe Swarker::PathsMerger do
 
   let(:merged_path) do
     subject.paths.find do |path|
-      path.verb == 'patch' && path.path == '/api/v1/users/{user_id}/repos/{id}.json'
+      path.verb == 'patch' && path.name == '/api/v1/users/{user_id}/repos/{id}.json'
     end
   end
 

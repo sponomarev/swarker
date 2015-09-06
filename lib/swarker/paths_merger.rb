@@ -24,13 +24,13 @@ module Swarker
     end
 
     def path_key(path)
-      "#{path.verb}_#{path.path}"
+      "#{path.verb}_#{path.name}"
     end
 
     def merge_paths(first_path, second_path)
       scheme = first_path.scheme.dup
       scheme.values.first['responses'].merge! second_path.scheme.values.first['responses']
-      Swarker::Path.new(first_path.path, scheme, true)
+      Swarker::Path.new(first_path.name, scheme, true)
     end
   end
 end
