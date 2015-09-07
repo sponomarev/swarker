@@ -3,6 +3,8 @@ module Swarker
     IGNORED_PATH_PARAMS = [:controller, :action]
     IN_QUERY            = 'query'.freeze
     IN_FORM_DATA        = 'formData'.freeze
+    IN_BODY             = 'body'.freeze
+    IN_PATH             = 'path'.freeze
     REF                 = '$ref'.freeze
 
     attr_reader :parameters
@@ -33,7 +35,7 @@ module Swarker
             description: options[:description] || '', # blank unless given
             type:        options[:type],
             default:     options[:example],
-            in:          determine_in(parameter)
+            in:          determine_in(parameter, options)
           }.compact
 
           param_desc[:required] = true if require_request_params.include?(parameter)
@@ -59,7 +61,7 @@ module Swarker
           description: '', # nothing to propose for description
           type:        'string', # assume all path parameters are strings
           default:     default,
-          in:          IN_QUERY, # path params are always in query
+          in:          IN_PATH,
           required:    true
         }
       end
@@ -69,12 +71,13 @@ module Swarker
       @path_schema[:extensions][:path_params].select { |k| !IGNORED_PATH_PARAMS.include?(k.to_sym) }
     end
 
-    def determine_in(parameter)
-      case (verb)
-      when 'get'
+    def determine_in(parameter, options)
+      if verb == 'get' || query_params.include?(parameter)
         IN_QUERY
+      elsif options[REF]
+        IN_BODY
       else
-        query_params.include?(parameter) ? IN_QUERY : IN_FORM_DATA
+        IN_FORM_DATA
       end
     end
 

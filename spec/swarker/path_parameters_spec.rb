@@ -14,7 +14,7 @@ describe Swarker::PathParameters do
   context 'complex case on POST request' do
     let(:lurker_path) { YAML.load_file(File.expand_path('spec/fixtures/paths/post/lurker.json.yml')) }
     let(:user_id_param) do
-      { name: 'user_id', description: '', type: 'string', default: '1', in: 'query', required: true }
+      { name: 'user_id', description: '', type: 'string', default: '1', in: 'path', required: true }
     end
     let(:repo_name_param) do
       { name: 'repo[name]', description: '', type: 'string', default: 'new-gem', in: 'formData' }
@@ -32,7 +32,7 @@ describe Swarker::PathParameters do
   context 'complex case on request with formData and ref' do
     let(:lurker_path) { YAML.load_file(File.expand_path('spec/fixtures/paths/complex/lurker.json.yml')) }
     let(:user_param) do
-      { name: 'user', description: '', in: 'formData', schema: { '$ref' => '#/definitions/user_request_parameters' } }
+      { name: 'user', description: '', in: 'body', schema: { '$ref' => '#/definitions/user_request_parameters' } }
     end
 
     subject { Swarker::PathParameters.new(lurker_path) }
