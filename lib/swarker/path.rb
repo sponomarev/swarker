@@ -35,7 +35,7 @@ module Swarker
     def computed_schema
       {
         description: original_schema[:description],
-        tags:        [original_schema[:description]],
+        tags:        [original_schema[:prefix]],
         parameters:  PathParameters.new(original_schema).parameters,
         responses:   responses
       }
