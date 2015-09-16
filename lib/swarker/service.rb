@@ -18,6 +18,10 @@ module Swarker
       parse_schema
     end
 
+    def json_filename
+      host || 'swagger'
+    end
+
     private
 
     attr_reader :original_schema
@@ -27,10 +31,9 @@ module Swarker
     end
 
     def computed_schema
-      {
-        host: host,
-        info: { title: original_schema[:name] }
-      }
+      { info: { title: original_schema[:name] } }.tap do |s|
+        s.merge!(host: host) if host
+      end
     end
   end
 end

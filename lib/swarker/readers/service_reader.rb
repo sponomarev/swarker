@@ -1,4 +1,5 @@
 require 'uri'
+require 'active_support/core_ext/object/blank'
 
 module Swarker
   module Readers
@@ -24,7 +25,11 @@ module Swarker
       def read_services
         hosts.collect do |host|
           Swarker::Service.new(host, original_schema, definitions, paths)
-        end
+        end.presence || [local_service]
+      end
+
+      def local_service
+        Swarker::Service.new(nil, original_schema, definitions, paths)
       end
 
       def definitions
