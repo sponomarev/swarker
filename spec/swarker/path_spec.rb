@@ -11,7 +11,7 @@ describe Swarker::Path do
 
     it('recognise description') { expect(subject.schema['get']['description']).to eq('user listing') }
 
-    it('recognise tags') { expect(subject.schema['get']['tags']).to include('user listing') }
+    it('recognise tags') { expect(subject.schema['get']['tags']).to include('users management') }
 
     it('recognise parameters') do
       expect(subject.schema['get']['parameters'].count).to eq(1)

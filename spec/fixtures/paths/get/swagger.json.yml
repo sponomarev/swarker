@@ -4,7 +4,7 @@ get:
     - "application/json"
   description: "user listing"
   tags:
-    - "user listing"
+    - "users management"
   parameters:
     - {
       name: limit,
