@@ -17,7 +17,7 @@ module Swarker
       services.each do |service|
         schema = Swarker::Serializers::ServiceSerializer.new(service).schema
 
-        create_file(File.join(output, "#{service.host}.json"), JSON.pretty_generate(schema), force: force?)
+        create_file(File.join(output, "#{service.json_filename}.json"), JSON.pretty_generate(schema), force: force?)
       end
     end
 

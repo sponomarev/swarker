@@ -18,7 +18,7 @@ post:
       description: '',
       type: string,
       default: '1',
-      in: query,
+      in: path,
       required: true
     }
   responses:
