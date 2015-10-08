@@ -1,15 +1,20 @@
-# Swarker
+# Swarker [![Build Status][BS img]][Build Status] [![Gem Version][GV img]][Gem Version] [![Code Climate][CC img]][Code Climate]
 
 Converts lurker schemas to swagger schema
 
-[![Build Status][BS img]][Build Status]
+<a href="https://evilmartians.com/?utm_source=swarker">
+<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
+</a>
+
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'swarker'
+group :development do
+  gem 'swarker', require: false
+end
 ```
 
 And then execute:
@@ -32,8 +37,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/swarker.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/sponomarev/swarker.
 
 ## License
 
@@ -41,4 +45,8 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 [Build Status]: https://travis-ci.org/sponomarev/swarker
 [BS img]: https://travis-ci.org/sponomarev/swarker.svg
+[Gem Version]: https://badge.fury.io/rb/swarker
+[GV img]: https://badge.fury.io/rb/swarker.svg
+[Code Climate]: https://codeclimate.com/github/sponomarev/swarker
+[CC img]: https://codeclimate.com/github/sponomarev/swarker/badges/gpa.svg
 
