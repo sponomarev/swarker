@@ -29,7 +29,7 @@ Or install it yourself as:
 ## Usage
 
 To convert you lurker schemas just run `swarker convert`. By default it expects to find schemas in `lurker` directory
-and store swagge schema to `public`:
+and store swagger schema to `public`:
 
 ```
 $ swarker convert
