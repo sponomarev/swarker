@@ -1,11 +1,12 @@
 # Swarker [![Build Status][BS img]][Build Status] [![Gem Version][GV img]][Gem Version] [![Code Climate][CC img]][Code Climate]
 
-Converts lurker schemas to swagger schema
+Converts [lurker][lurker] schemas to [swagger][swagger] schema
+
+## Thanks
 
 <a href="https://evilmartians.com/?utm_source=swarker">
 <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
 </a>
-
 
 ## Installation
 
@@ -27,13 +28,37 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To convert you lurker schemas just run `swarker convert`. By default it expects to find schemas in `lurker` directory
+and store swagge schema to `public`:
+
+```
+$ swarker convert
+```
+
+You can easily define input and output directory for your choice:
+
+```
+$ swarker convert -i lurker_path -o output_path
+```
+
+Also you can filter lurker endpoints by it's path subtree:
+
+```
+$ swarker convert -s lurker/api/v2
+```
+
+To familiarize with other options just start with:
+
+```
+$ swarker help
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can 
+also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
@@ -50,3 +75,5 @@ The gem is available as open source under the terms of the [MIT License](http://
 [Code Climate]: https://codeclimate.com/github/sponomarev/swarker
 [CC img]: https://codeclimate.com/github/sponomarev/swarker/badges/gpa.svg
 
+[lurker]: https://github.com/razum2um/lurker/
+[swagger]: https://github.com/swagger-api/swagger-spec
